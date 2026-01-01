@@ -3,7 +3,7 @@
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "apps/mobile/src",
   "projectType": "application",
-  "tags": ["type:app", "platform:mobile"],
+  "tags": ["type:app", "platform:mobile", "framework:ionic", "framework:react"],
   "targets": {
     "build": {
       "executor": "@nx/vite:build",
@@ -14,10 +14,13 @@
       },
       "configurations": {
         "development": {
-          "mode": "development"
+          "mode": "development",
+          "sourcemap": true
         },
         "production": {
-          "mode": "production"
+          "mode": "production",
+          "sourcemap": false,
+          "minify": true
         }
       }
     },
@@ -25,7 +28,9 @@
       "executor": "@nx/vite:dev-server",
       "defaultConfiguration": "development",
       "options": {
-        "buildTarget": "mobile:build"
+        "buildTarget": "mobile:build",
+        "port": 3000,
+        "host": "0.0.0.0"
       },
       "configurations": {
         "development": {
@@ -42,7 +47,9 @@
       "executor": "@nx/vite:preview-server",
       "defaultConfiguration": "development",
       "options": {
-        "buildTarget": "mobile:build"
+        "buildTarget": "mobile:build",
+        "port": 3000,
+        "host": "0.0.0.0"
       },
       "configurations": {
         "development": {
@@ -57,14 +64,37 @@
       "executor": "@nx/vite:typecheck",
       "options": {}
     },
-    "sync": {
+    "lint": {
+      "executor": "@nx/eslint:lint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/mobile/**/*.{ts,tsx,js,jsx}"]
+      }
+    },
+    "test": {
+      "executor": "@nx/vite:test",
+      "outputs": ["{options.reportsDirectory}"],
+      "options": {
+        "passWithNoTests": true,
+        "reportsDirectory": "coverage/apps/mobile"
+      }
+    },
+    "cap:doctor": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "npx cap doctor",
+        "cwd": "apps/mobile"
+      }
+    },
+    "cap:sync": {
       "executor": "nx:run-commands",
       "options": {
         "command": "npx cap sync",
         "cwd": "apps/mobile"
-      }
+      },
+      "dependsOn": ["build"]
     },
-    "copy": {
+    "cap:copy": {
       "executor": "nx:run-commands",
       "options": {
         "command": "npx cap copy",
@@ -72,49 +102,80 @@
       },
       "dependsOn": ["build"]
     },
-    "open:android": {
-      "executor": "nx:run-commands",
-      "options": {
-        "command": "npx cap open android",
-        "cwd": "apps/mobile"
-      },
-      "dependsOn": ["sync"]
-    },
-    "open:ios": {
-      "executor": "nx:run-commands",
-      "options": {
-        "command": "npx cap open ios",
-        "cwd": "apps/mobile"
-      },
-      "dependsOn": ["sync"]
-    },
-    "run:android": {
-      "executor": "nx:run-commands",
-      "options": {
-        "command": "npx cap run android",
-        "cwd": "apps/mobile"
-      },
-      "dependsOn": ["build", "copy"]
-    },
-    "run:ios": {
-      "executor": "nx:run-commands",
-      "options": {
-        "command": "npx cap run ios",
-        "cwd": "apps/mobile"
-      },
-      "dependsOn": ["build", "copy"]
-    },
-    "add:android": {
+    "cap:add:android": {
       "executor": "nx:run-commands",
       "options": {
         "command": "npx cap add android",
         "cwd": "apps/mobile"
       }
     },
-    "add:ios": {
+    "cap:add:ios": {
       "executor": "nx:run-commands",
       "options": {
         "command": "npx cap add ios",
+        "cwd": "apps/mobile"
+      }
+    },
+    "cap:open:android": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "npx cap open android",
+        "cwd": "apps/mobile"
+      },
+      "dependsOn": ["cap:sync"]
+    },
+    "cap:open:ios": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "npx cap open ios",
+        "cwd": "apps/mobile"
+      },
+      "dependsOn": ["cap:sync"]
+    },
+    "cap:run:android": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "npx cap run android",
+        "cwd": "apps/mobile"
+      },
+      "dependsOn": ["build", "cap:copy"]
+    },
+    "cap:run:ios": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "npx cap run ios",
+        "cwd": "apps/mobile"
+      },
+      "dependsOn": ["build", "cap:copy"]
+    },
+    "build:android": {
+      "executor": "nx:run-commands",
+      "options": {
+        "commands": [
+          "npx nx build mobile --configuration=production",
+          "npx cap copy android",
+          "npx cap run android"
+        ],
+        "cwd": "apps/mobile",
+        "parallel": false
+      }
+    },
+    "build:ios": {
+      "executor": "nx:run-commands",
+      "options": {
+        "commands": [
+          "npx nx build mobile --configuration=production",
+          "npx cap copy ios",
+          "npx cap run ios"
+        ],
+        "cwd": "apps/mobile",
+        "parallel": false
+      }
+    },
+    "resources": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "npx capacitor-resources",
         "cwd": "apps/mobile"
       }
     }

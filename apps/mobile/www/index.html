@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Outsmart Mobile</title>
+
+    <!-- Base URL for routing -->
+    <base href="/" />
+
+    <!-- Viewport and mobile optimization -->
+    <meta name="color-scheme" content="light dark" />
+    <meta
+      name="viewport"
+      content="viewport-fit=cover, width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="msapplication-tap-highlight" content="no" />
+
+    <!-- SEO and social media meta tags -->
+    <meta name="description" content="Outsmart Mobile - Your intelligent mobile companion for productivity and innovation." />
+    <meta name="keywords" content="outsmart, mobile, app, productivity, innovation, ionic, capacitor" />
+    <meta name="author" content="Outsmart Team" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://outsmart.app/" />
+    <meta property="og:title" content="Outsmart Mobile" />
+    <meta property="og:description" content="Your intelligent mobile companion for productivity and innovation." />
+    <meta property="og:image" content="/assets/images/og-image.png" />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://outsmart.app/" />
+    <meta property="twitter:title" content="Outsmart Mobile" />
+    <meta property="twitter:description" content="Your intelligent mobile companion for productivity and innovation." />
+    <meta property="twitter:image" content="/assets/images/twitter-image.png" />
+
+    <!-- App icons and splash screens -->
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/icons/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/icons/favicon-16x16.png" />
+    <link rel="icon" href="/assets/icons/favicon.ico" />
+
+    <!-- Apple Touch Icons -->
+    <link rel="apple-touch-icon" href="/assets/icons/apple-touch-icon.png" />
+    <link rel="apple-touch-icon" sizes="152x152" href="/assets/icons/apple-touch-icon-152x152.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/icons/apple-touch-icon-180x180.png" />
+    <link rel="apple-touch-icon" sizes="167x167" href="/assets/icons/apple-touch-icon-167x167.png" />
+
+    <!-- iOS meta tags & icons -->
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta name="apple-mobile-web-app-title" content="Outsmart" />
+
+    <!-- iOS splash screens -->
+    <link rel="apple-touch-startup-image" href="/assets/splash/apple-splash-2048-2732.jpg" media="(device-width: 1024px) and (device-height: 1366px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)" />
+    <link rel="apple-touch-startup-image" href="/assets/splash/apple-splash-1668-2224.jpg" media="(device-width: 834px) and (device-height: 1112px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)" />
+    <link rel="apple-touch-startup-image" href="/assets/splash/apple-splash-1536-2048.jpg" media="(device-width: 768px) and (device-height: 1024px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)" />
+
+    <!-- Android meta tags -->
+    <meta name="theme-color" content="#3b82f6" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="msapplication-TileColor" content="#3b82f6" />
+    <meta name="msapplication-config" content="/assets/icons/browserconfig.xml" />
+
+    <!-- PWA manifest -->
+    <link rel="manifest" href="/manifest.json" />
+
+    <!-- Security headers -->
+    <meta http-equiv="X-Content-Type-Options" content="nosniff" />
+    <meta http-equiv="X-Frame-Options" content="DENY" />
+    <meta http-equiv="X-XSS-Protection" content="1; mode=block" />
+
+    <!-- Preconnect to external domains for performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <!-- Critical CSS for initial paint -->
+    <style>
+      /* Critical styles for above-the-fold content */
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+          'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        height: 100%;
+      }
+
+      body {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        background-color: #f9fafb;
+        font-feature-settings: 'cv11', 'ss01';
+        font-variation-settings: 'opsz' 32;
+      }
+
+      #root {
+        height: 100%;
+      }
+
+      /* Loading screen styles */
+      .app-loading {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        z-index: 9999;
+        transition: opacity 0.3s ease-in-out;
+      }
+
+      .app-loading.hidden {
+        opacity: 0;
+        pointer-events: none;
+      }
+
+      .loading-logo {
+        width: 80px;
+        height: 80px;
+        margin-bottom: 24px;
+        background: rgba(255, 255, 255, 0.1);
+        -webkit-backdrop-filter: blur(10px);
+                backdrop-filter: blur(10px);
+        border-radius: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 32px;
+        font-weight: 700;
+        color: white;
+        animation: pulse 2s infinite;
+      }
+
+      .loading-text {
+        color: white;
+        font-size: 18px;
+        font-weight: 500;
+        margin-bottom: 16px;
+        opacity: 0.9;
+      }
+
+      .loading-spinner {
+        width: 32px;
+        height: 32px;
+        border: 3px solid rgba(255, 255, 255, 0.3);
+        border-top: 3px solid white;
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+      }
+
+      .loading-progress {
+        width: 200px;
+        height: 2px;
+        background: rgba(255, 255, 255, 0.2);
+        border-radius: 1px;
+        margin-top: 24px;
+        overflow: hidden;
+      }
+
+      .loading-progress-bar {
+        width: 0%;
+        height: 100%;
+        background: white;
+        border-radius: 1px;
+        animation: progress 2s ease-in-out infinite;
+      }
+
+      @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+      }
+
+      @keyframes pulse {
+        0%, 100% { transform: scale(1); opacity: 1; }
+        50% { transform: scale(1.05); opacity: 0.8; }
+      }
+
+      @keyframes progress {
+        0% { width: 0%; }
+        50% { width: 70%; }
+        100% { width: 100%; }
+      }
+
+      /* Dark mode support */
+      @media (prefers-color-scheme: dark) {
+        body {
+          background-color: #111827;
+        }
+
+        .app-loading {
+          background: linear-gradient(135deg, #1f2937 0%, #111827 100%);
+        }
+      }
+
+      /* Reduced motion support */
+      @media (prefers-reduced-motion: reduce) {
+        .loading-logo,
+        .loading-spinner,
+        .loading-progress-bar {
+          animation: none;
+        }
+      }
+
+      /* Hide elements when app is ready */
+      .app-ready .app-loading {
+        display: none;
+      }
+
+      /* Safe area support */
+      .safe-area {
+        padding-top: env(safe-area-inset-top);
+        padding-right: env(safe-area-inset-right);
+        padding-bottom: env(safe-area-inset-bottom);
+        padding-left: env(safe-area-inset-left);
+      }
+    </style>
+    <script type="module" crossorigin src="./assets/main-CbjW2XJp.js"></script>
+    <link rel="stylesheet" crossorigin href="./assets/style-B04C1yVg.css">
+  </head>
+
+  <body>
+    <!-- App loading screen -->
+    <div class="app-loading" id="app-loading">
+      <div class="loading-logo">
+        OS
+      </div>
+      <div class="loading-text">Outsmart</div>
+      <div class="loading-spinner"></div>
+      <div class="loading-progress">
+        <div class="loading-progress-bar"></div>
+      </div>
+    </div>
+
+    <!-- Main app container -->
+    <div id="root" class="safe-area"></div>
+
+    <!-- App initialization script -->
+
+    <!-- Service Worker registration -->
+    <script>
+      // Register service worker for PWA capabilities
+      if ('serviceWorker' in navigator && 'PushManager' in window) {
+        window.addEventListener('load', function() {
+          navigator.serviceWorker.register('/sw.js')
+            .then(function(registration) {
+              console.log('SW registered: ', registration);
+            })
+            .catch(function(registrationError) {
+              console.log('SW registration failed: ', registrationError);
+            });
+        });
+      }
+    </script>
+
+    <!-- Capacitor and mobile optimizations -->
+    <script>
+      // Initialize app when DOM is loaded
+      window.addEventListener('DOMContentLoaded', function() {
+        // Add app-ready class after initial load
+        setTimeout(() => {
+          document.body.classList.add('app-ready');
+          const loadingElement = document.getElementById('app-loading');
+          if (loadingElement) {
+            loadingElement.classList.add('hidden');
+            setTimeout(() => {
+              loadingElement.style.display = 'none';
+            }, 300);
+          }
+        }, 1500);
+      });
+
+      // Prevent context menu on long press (iOS Safari)
+      window.addEventListener('contextmenu', function(e) {
+        if (window.DeviceMotionEvent) {
+          e.preventDefault();
+        }
+      });
+
+      // Prevent zoom on double tap
+      let lastTouchEnd = 0;
+      document.addEventListener('touchend', function(event) {
+        const now = (new Date()).getTime();
+        if (now - lastTouchEnd <= 300) {
+          event.preventDefault();
+        }
+        lastTouchEnd = now;
+      }, false);
+
+      // Prevent pull-to-refresh on mobile
+      document.body.addEventListener('touchstart', function(e) {
+        if (e.touches.length === 1 && e.touches[0].clientY <= 10) {
+          e.preventDefault();
+        }
+      }, { passive: false });
+
+      document.body.addEventListener('touchmove', function(e) {
+        if (e.touches.length === 1 && e.touches[0].clientY <= 10) {
+          e.preventDefault();
+        }
+      }, { passive: false });
+
+      // Handle safe area insets for notched devices
+      if (CSS.supports('padding-top: env(safe-area-inset-top)')) {
+        document.documentElement.style.setProperty('--ion-safe-area-top', 'env(safe-area-inset-top)');
+        document.documentElement.style.setProperty('--ion-safe-area-bottom', 'env(safe-area-inset-bottom)');
+        document.documentElement.style.setProperty('--ion-safe-area-left', 'env(safe-area-inset-left)');
+        document.documentElement.style.setProperty('--ion-safe-area-right', 'env(safe-area-inset-right)');
+      }
+
+      // Performance monitoring
+      window.addEventListener('load', function() {
+        // Log performance metrics
+        if ('performance' in window) {
+          const perfData = performance.getEntriesByType('navigation')[0];
+          console.log('App loaded in:', perfData.loadEventEnd - perfData.fetchStart, 'ms');
+        }
+      });
+
+      // Error handling
+      window.addEventListener('error', function(e) {
+        console.error('Global error:', e.error);
+      });
+
+      window.addEventListener('unhandledrejection', function(e) {
+        console.error('Unhandled promise rejection:', e.reason);
+      });
+    </script>
+
+    <!-- Structured data for SEO -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "MobileApplication",
+      "name": "Outsmart Mobile",
+      "description": "Your intelligent mobile companion for productivity and innovation.",
+      "applicationCategory": "ProductivityApplication",
+      "operatingSystem": "iOS, Android",
+      "offers": {
+        "@type": "Offer",
+        "price": "0"
+      },
+      "author": {
+        "@type": "Organization",
+        "name": "Outsmart Team"
+      }
+    }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Outsmart</string>
+    <string name="title_activity_main">Outsmart</string>
+    <string name="package_name">com.outsmart.mobile</string>
+    <string name="custom_url_scheme">com.outsmart.mobile</string>
+</resources>

@@ -1,0 +1,307 @@
+/* Import CSS files first, before any other rules */
+@import '@ionic/react/css/core.css';
+@import '@ionic/react/css/normalize.css';
+@import '@ionic/react/css/structure.css';
+@import '@ionic/react/css/typography.css';
+@import '@ionic/react/css/padding.css';
+@import '@ionic/react/css/float-elements.css';
+@import '@ionic/react/css/text-alignment.css';
+@import '@ionic/react/css/text-transformation.css';
+@import '@ionic/react/css/flex-utils.css';
+@import '@ionic/react/css/display.css';
+@import '@ionic/react/css/palettes/dark.system.css';
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+/* Tailwind CSS imports - must come after other imports */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom CSS variables for theme consistency */
+:root {
+  /* Brand Colors */
+  --outsmart-primary: #3b82f6;
+  --outsmart-primary-dark: #1d4ed8;
+  --outsmart-secondary: #10b981;
+  --outsmart-accent: #8b5cf6;
+
+  /* Safe Area Insets */
+  --safe-area-inset-top: env(safe-area-inset-top);
+  --safe-area-inset-right: env(safe-area-inset-right);
+  --safe-area-inset-bottom: env(safe-area-inset-bottom);
+  --safe-area-inset-left: env(safe-area-inset-left);
+
+  /* Custom shadows */
+  --shadow-soft:
+    0 2px 15px -3px rgba(0, 0, 0, 0.07), 0 10px 20px -2px rgba(0, 0, 0, 0.04);
+  --shadow-medium:
+    0 4px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  --shadow-hard: 0 10px 40px -10px rgba(0, 0, 0, 0.2);
+
+  /* Glass morphism variables */
+  --glass-bg: rgba(255, 255, 255, 0.1);
+  --glass-border: rgba(255, 255, 255, 0.2);
+  --glass-bg-dark: rgba(0, 0, 0, 0.1);
+  --glass-border-dark: rgba(255, 255, 255, 0.1);
+}
+
+/* Base styles with Tailwind integration */
+@layer base {
+  html {
+    font-family:
+      'Inter',
+      -apple-system,
+      BlinkMacSystemFont,
+      'Segoe UI',
+      Roboto,
+      'Helvetica Neue',
+      Arial,
+      sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    @apply bg-gray-50;
+    margin: 0;
+    font-feature-settings: 'cv11', 'ss01';
+    font-variation-settings: 'opsz' 32;
+  }
+
+  /* Improve text rendering */
+  * {
+    -webkit-tap-highlight-color: transparent;
+  }
+}
+
+/* Component styles */
+@layer components {
+  /* Custom button variants */
+  .btn-primary {
+    @apply bg-primary-600 hover:bg-primary-700 text-white font-medium py-2.5 px-6 rounded-lg transition-colors duration-200 ease-in-out shadow-sm;
+  }
+
+  .btn-secondary {
+    @apply bg-gray-100 hover:bg-gray-200 text-gray-900 font-medium py-2.5 px-6 rounded-lg transition-colors duration-200 ease-in-out;
+  }
+
+  .btn-ghost {
+    @apply bg-transparent hover:bg-gray-100 text-gray-700 font-medium py-2.5 px-6 rounded-lg transition-colors duration-200 ease-in-out;
+  }
+
+  /* Card component */
+  .card {
+    @apply bg-white rounded-xl shadow-soft border border-gray-200 p-6;
+  }
+
+  .card-glass {
+    @apply bg-white/10 backdrop-blur-lg border border-white/20 rounded-xl p-6;
+    background-color: var(--glass-bg);
+    border-color: var(--glass-border);
+  }
+
+  /* Input styles that work with Ionic */
+  .input-field {
+    @apply w-full px-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all duration-200 ease-in-out bg-white;
+  }
+
+  /* Status indicators */
+  .status-dot {
+    @apply w-2 h-2 rounded-full;
+  }
+
+  .status-online {
+    @apply bg-green-500;
+  }
+
+  .status-offline {
+    @apply bg-gray-400;
+  }
+
+  .status-busy {
+    @apply bg-red-500;
+  }
+
+  /* Navigation styles */
+  .nav-item {
+    @apply flex items-center space-x-3 px-4 py-3 rounded-lg transition-colors duration-200 ease-in-out;
+  }
+
+  .nav-item-active {
+    @apply bg-primary-50 text-primary-700 border-r-2 border-primary-700;
+  }
+
+  .nav-item-inactive {
+    @apply text-gray-600 hover:bg-gray-50 hover:text-gray-900;
+  }
+}
+
+/* Utility styles */
+@layer utilities {
+  /* Safe area utilities */
+  .safe-top {
+    padding-top: var(--safe-area-inset-top);
+  }
+
+  .safe-bottom {
+    padding-bottom: var(--safe-area-inset-bottom);
+  }
+
+  .safe-left {
+    padding-left: var(--safe-area-inset-left);
+  }
+
+  .safe-right {
+    padding-right: var(--safe-area-inset-right);
+  }
+
+  /* Animation utilities */
+  .animate-fade-in {
+    animation: fadeIn 0.5s ease-in-out;
+  }
+
+  .animate-slide-up {
+    animation: slideUp 0.3s ease-out;
+  }
+
+  .animate-slide-down {
+    animation: slideDown 0.3s ease-out;
+  }
+
+  /* Glass morphism utilities */
+  .glass {
+    background-color: var(--glass-bg);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid var(--glass-border);
+  }
+
+  .glass-dark {
+    background-color: var(--glass-bg-dark);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid var(--glass-border-dark);
+  }
+
+  /* Scrollbar styling */
+  .scrollbar-thin {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(155, 155, 155, 0.5) transparent;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar {
+    width: 4px;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar-thumb {
+    background-color: rgba(155, 155, 155, 0.5);
+    border-radius: 20px;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(155, 155, 155, 0.7);
+  }
+}
+
+/* Dark mode styles */
+@media (prefers-color-scheme: dark) {
+  .dark {
+    /* Override Ionic dark theme colors with our custom colors */
+    --ion-color-primary: #60a5fa;
+    --ion-color-secondary: #34d399;
+    --ion-color-tertiary: #a78bfa;
+
+    /* Custom dark mode variables */
+    --outsmart-primary: #60a5fa;
+    --outsmart-primary-dark: #3b82f6;
+    --outsmart-secondary: #34d399;
+    --outsmart-accent: #a78bfa;
+  }
+
+  .dark body {
+    @apply bg-gray-900;
+  }
+
+  .dark .card {
+    @apply bg-gray-800 border-gray-700;
+  }
+
+  .dark .input-field {
+    @apply bg-gray-800 border-gray-700 text-white;
+  }
+
+  .dark .btn-secondary {
+    @apply bg-gray-800 hover:bg-gray-700 text-gray-100;
+  }
+
+  .dark .btn-ghost {
+    @apply hover:bg-gray-800 text-gray-300;
+  }
+}
+
+/* Ionic component overrides to work better with Tailwind */
+ion-content {
+  --padding-start: 0;
+  --padding-end: 0;
+  --padding-top: 0;
+  --padding-bottom: 0;
+}
+
+ion-toolbar {
+  --min-height: 56px;
+}
+
+ion-header {
+  box-shadow: none;
+}
+
+/* Custom loading spinner */
+.loading-spinner {
+  @apply inline-block w-8 h-8 border-4 border-gray-200 border-t-primary-600 rounded-full animate-spin;
+}
+
+/* Responsive utilities for mobile-first design */
+@media (max-width: 640px) {
+  .mobile-hidden {
+    display: none;
+  }
+}
+
+@media (min-width: 641px) {
+  .mobile-only {
+    display: none;
+  }
+}
+
+/* Print styles */
+@media print {
+  .no-print {
+    display: none !important;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .card {
+    @apply border-2 border-gray-900;
+  }
+
+  .btn-primary {
+    @apply border-2 border-blue-900;
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

@@ -54,6 +54,11 @@ export default defineConfig({
     alias: {
       '@': resolve(__dirname, 'src'),
       '@assets': resolve(__dirname, '../../data/assets'),
+      '@components': resolve(__dirname, 'src/components'),
+      '@pages': resolve(__dirname, 'src/pages'),
+      '@hooks': resolve(__dirname, 'src/hooks'),
+      '@utils': resolve(__dirname, 'src/utils'),
+      '@types': resolve(__dirname, 'src/types'),
     },
   },
 
@@ -84,18 +89,6 @@ export default defineConfig({
       '@capacitor/keyboard',
       '@capacitor/status-bar',
     ],
-  },
-
-  // CSS configuration
-  css: {
-    preprocessorOptions: {
-      scss: {
-        additionalData: `@import "@ionic/react/css/variables.css";`,
-      },
-    },
-    modules: {
-      localsConvention: 'camelCase',
-    },
   },
 
   // Testing configuration (Vitest)
