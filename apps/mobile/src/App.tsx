@@ -1,39 +1,27 @@
 import React from 'react';
-import { IonApp, IonRouterOutlet, IonSplitPane } from '@ionic/react';
-import { IonReactRouter } from '@ionic/react-router';
-import { Route, Redirect } from 'react-router-dom';
-
-import Menu from './components/Menu';
-import Home from './pages/Home';
-import Updates from './pages/Updates';
-import Settings from './pages/Settings';
-import About from './pages/About';
+import {
+  IonApp,
+  IonContent,
+  IonHeader,
+  IonTitle,
+  IonToolbar,
+} from '@ionic/react';
 
 const App: React.FC = () => {
   return (
     <IonApp>
-      <IonReactRouter>
-        <IonSplitPane contentId="main" when="md">
-          <Menu />
-          <IonRouterOutlet id="main">
-            <Route exact path="/home">
-              <Home />
-            </Route>
-            <Route exact path="/updates">
-              <Updates />
-            </Route>
-            <Route exact path="/settings">
-              <Settings />
-            </Route>
-            <Route exact path="/about">
-              <About />
-            </Route>
-            <Route exact path="/">
-              <Redirect to="/home" />
-            </Route>
-          </IonRouterOutlet>
-        </IonSplitPane>
-      </IonReactRouter>
+      <IonHeader>
+        <IonToolbar>
+          <IonTitle>Outsmart Mobile</IonTitle>
+        </IonToolbar>
+      </IonHeader>
+      <IonContent className="ion-padding">
+        <div style={{ textAlign: 'center', marginTop: '50px' }}>
+          <h1>Hello World!</h1>
+          <p>Welcome to Outsmart Mobile App</p>
+          <p>🚀 The setup is working correctly!</p>
+        </div>
+      </IonContent>
     </IonApp>
   );
 };
