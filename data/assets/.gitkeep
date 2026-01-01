@@ -1,0 +1,61 @@
+# Assets Directory
+
+This directory contains sample assets (images, audio, video files) that are catalogued by the Outsmart platform.
+
+## Structure
+
+The assets are organized as follows:
+- `images/` - Image files (.jpg, .png, .gif, etc.)
+- `audio/` - Audio files (.mp3, .wav, .flac, etc.)
+- `video/` - Video files (.mp4, .mov, .avi, etc.)
+
+## Usage
+
+Assets placed in this directory will be automatically discovered and catalogued by the Python scripts in the `data/catalogue/` directory.
+
+The catalogue system will:
+1. Scan this directory for supported file types
+2. Extract metadata from each file
+3. Generate AI descriptions using Ollama (if available)
+4. Create a searchable catalogue in JSON format
+
+## Supported Formats
+
+### Images
+- .jpg, .jpeg
+- .png
+- .gif
+- .bmp
+- .webp
+
+### Audio
+- .mp3
+- .wav
+- .flac
+- .aac
+- .ogg
+
+### Video
+- .mp4
+- .mov
+- .avi
+- .mkv
+- .webm
+
+## Examples
+
+To get started, add some sample files:
+
+```
+assets/
+├── images/
+│   ├── logo.png
+│   └── banner.jpg
+├── audio/
+│   ├── notification.mp3
+│   └── background-music.wav
+└── video/
+    └── intro.mp4
+```
+
+Run `npm run python:run refresh` from the `data/catalogue/` directory to generate the catalogue.

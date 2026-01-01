@@ -1,0 +1,135 @@
+{
+  "name": "catalogue",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "data/catalogue/scripts",
+  "projectType": "application",
+  "tags": ["type:data", "platform:python", "platform:node"],
+  "targets": {
+    "build": {
+      "executor": "@nx/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "data/catalogue/dist",
+        "main": "data/catalogue/scripts/validate.ts",
+        "tsConfig": "data/catalogue/tsconfig.json"
+      }
+    },
+    "validate": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "ts-node scripts/validate.ts",
+        "cwd": "data/catalogue"
+      }
+    },
+    "generate": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "ts-node scripts/generate.ts",
+        "cwd": "data/catalogue"
+      }
+    },
+    "sync": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "ts-node scripts/sync.ts",
+        "cwd": "data/catalogue"
+      }
+    },
+    "dev": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "ts-node-dev --respawn scripts/dev.ts",
+        "cwd": "data/catalogue"
+      }
+    },
+    "python:install": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "pip install -r requirements.txt",
+        "cwd": "data/catalogue"
+      }
+    },
+    "python:run": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "python scripts/main.py",
+        "cwd": "data/catalogue"
+      }
+    },
+    "python:refresh": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "python scripts/main.py refresh",
+        "cwd": "data/catalogue"
+      }
+    },
+    "python:stats": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "python scripts/main.py stats",
+        "cwd": "data/catalogue"
+      }
+    },
+    "python:validate": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "python scripts/main.py validate",
+        "cwd": "data/catalogue"
+      }
+    },
+    "python:test-ollama": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "python scripts/main.py test-ollama",
+        "cwd": "data/catalogue"
+      }
+    },
+    "ollama:pull": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "ollama pull llama2",
+        "cwd": "data/catalogue"
+      }
+    },
+    "ollama:serve": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "ollama serve",
+        "cwd": "data/catalogue"
+      }
+    },
+    "lint": {
+      "executor": "nx:run-commands",
+      "options": {
+        "commands": [
+          "flake8 scripts/",
+          "mypy scripts/",
+          "black --check scripts/"
+        ],
+        "cwd": "data/catalogue",
+        "parallel": false
+      }
+    },
+    "format": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "black scripts/",
+        "cwd": "data/catalogue"
+      }
+    },
+    "test": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "pytest",
+        "cwd": "data/catalogue"
+      }
+    },
+    "typecheck": {
+      "executor": "@nx/js:tsc",
+      "options": {
+        "tsConfig": "data/catalogue/tsconfig.json",
+        "noEmit": true
+      }
+    }
+  }
+}

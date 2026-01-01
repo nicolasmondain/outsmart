@@ -1,0 +1,31 @@
+{
+  "name": "@outsmart/catalogue",
+  "version": "0.0.1",
+  "private": true,
+  "description": "Data catalogue with Python scripts and Ollama integration, plus TypeScript validation scripts",
+  "scripts": {
+    "validate": "ts-node scripts/validate.ts",
+    "generate": "ts-node scripts/generate.ts",
+    "sync": "ts-node scripts/sync.ts",
+    "build": "tsc",
+    "dev": "ts-node-dev --respawn scripts/dev.ts",
+    "python:install": "pip install -r requirements.txt",
+    "python:run": "python scripts/main.py",
+    "ollama:pull": "ollama pull llama2",
+    "ollama:serve": "ollama serve"
+  },
+  "dependencies": {
+    "axios": "^1.6.0",
+    "dotenv": "^16.3.0",
+    "fs-extra": "^11.1.0",
+    "joi": "^17.11.0",
+    "yaml": "^2.3.0"
+  },
+  "devDependencies": {
+    "@types/fs-extra": "^11.0.0",
+    "@types/node": "^20.0.0",
+    "ts-node": "^10.9.0",
+    "ts-node-dev": "^2.0.0",
+    "typescript": "^5.1.0"
+  }
+}

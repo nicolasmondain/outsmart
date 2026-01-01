@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Outsmart Mobile</title>
+
+    <base href="/" />
+
+    <meta name="color-scheme" content="light dark" />
+    <meta
+      name="viewport"
+      content="viewport-fit=cover, width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="msapplication-tap-highlight" content="no" />
+
+    <!-- App icons and splash screens -->
+    <link rel="icon" type="image/png" href="assets/icon/favicon.png" />
+    <link rel="apple-touch-icon" href="assets/icon/apple-touch-icon.png" />
+    <link rel="apple-touch-icon" sizes="152x152" href="assets/icon/apple-touch-icon-152x152.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/icon/apple-touch-icon-180x180.png" />
+    <link rel="apple-touch-icon" sizes="167x167" href="assets/icon/apple-touch-icon-167x167.png" />
+
+    <!-- iOS meta tags & icons -->
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="apple-mobile-web-app-title" content="Outsmart" />
+
+    <!-- Android meta tags -->
+    <meta name="theme-color" content="#3880ff" />
+    <meta name="mobile-web-app-capable" content="yes" />
+
+    <!-- PWA manifest -->
+    <link rel="manifest" href="manifest.json" />
+
+    <!-- Ionic CSS -->
+    <style>
+      /* Critical CSS for initial load */
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+          'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+          sans-serif;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+      }
+
+      /* Loading spinner */
+      .loading-container {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: #ffffff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 9999;
+      }
+
+      .loading-spinner {
+        width: 40px;
+        height: 40px;
+        border: 4px solid #f3f3f3;
+        border-top: 4px solid #3880ff;
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+      }
+
+      @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+      }
+
+      /* Dark mode support */
+      @media (prefers-color-scheme: dark) {
+        .loading-container {
+          background: #121212;
+        }
+        .loading-spinner {
+          border-color: #333333;
+          border-top-color: #428cff;
+        }
+      }
+
+      /* Hide loading when app is ready */
+      .app-ready .loading-container {
+        display: none;
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- Loading screen -->
+    <div class="loading-container">
+      <div class="loading-spinner"></div>
+    </div>
+
+    <!-- Main app container -->
+    <div id="root"></div>
+
+    <!-- App initialization script -->
+    <script type="module" src="/src/main.tsx"></script>
+
+    <!-- Capacitor plugins initialization -->
+    <script>
+      // Initialize Capacitor when the page loads
+      window.addEventListener('DOMContentLoaded', function() {
+        // Add app-ready class when DOM is loaded
+        setTimeout(() => {
+          document.body.classList.add('app-ready');
+        }, 100);
+      });
+
+      // Prevent context menu on long press (iOS Safari)
+      window.addEventListener('contextmenu', function(e) {
+        e.preventDefault();
+      });
+
+      // Prevent zoom on double tap
+      let lastTouchEnd = 0;
+      document.addEventListener('touchend', function(event) {
+        const now = (new Date()).getTime();
+        if (now - lastTouchEnd <= 300) {
+          event.preventDefault();
+        }
+        lastTouchEnd = now;
+      }, false);
+
+      // Handle safe area insets for notched devices
+      if (CSS.supports('padding-top: env(safe-area-inset-top)')) {
+        document.documentElement.style.setProperty('--ion-safe-area-top', 'env(safe-area-inset-top)');
+        document.documentElement.style.setProperty('--ion-safe-area-bottom', 'env(safe-area-inset-bottom)');
+        document.documentElement.style.setProperty('--ion-safe-area-left', 'env(safe-area-inset-left)');
+        document.documentElement.style.setProperty('--ion-safe-area-right', 'env(safe-area-inset-right)');
+      }
+    </script>
+  </body>
+</html>
