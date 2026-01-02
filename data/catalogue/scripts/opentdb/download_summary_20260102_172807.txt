@@ -1,0 +1,40 @@
+
+OpenTDB Category-by-Category Download Summary
+Generated: Fri Jan  2 17:57:56 CET 2026
+Log file: /Users/nicolas.m/Documents/repositories/github/outsmart/data/catalogue/scripts/opentdb/download_all_20260102_172807.log
+
+Statistics:
+-----------
+Total Categories:      24
+Successfully Completed: 18
+Failed:                6
+Total Questions:       4000
+Duration:              00:29:49
+
+Results by Category:
+--------------------
+
+✓ Category 9: General Knowledge - 400 questions
+✓ Category 10: Entertainment: Books - 100 questions
+✓ Category 11: Entertainment: Film - 250 questions
+✓ Category 12: Entertainment: Music - 400 questions
+✗ Category 13: Entertainment: Musicals & Theatres - FAILED (0 questions)
+✓ Category 14: Entertainment: Television - 150 questions
+✓ Category 15: Entertainment: Video Games - 1100 questions
+✓ Category 16: Entertainment: Board Games - 50 questions
+✓ Category 17: Science & Nature - 250 questions
+✗ Category 18: Science: Computers - FAILED (0 questions)
+✗ Category 19: Science: Mathematics - FAILED (0 questions)
+✓ Category 20: Mythology - 50 questions
+✓ Category 21: Sports - 150 questions
+✓ Category 22: Geography - 300 questions
+✓ Category 23: History - 350 questions
+✓ Category 24: Politics - 50 questions
+✗ Category 25: Art - FAILED (0 questions)
+✓ Category 26: Celebrities - 50 questions
+✗ Category 27: Animals - FAILED (0 questions)
+✓ Category 28: Vehicles - 50 questions
+✓ Category 29: Entertainment: Comics - 50 questions
+✗ Category 30: Science: Gadgets - FAILED (0 questions)
+✓ Category 31: Entertainment: Japanese Anime & Manga - 150 questions
+✓ Category 32: Entertainment: Cartoon & Animations - 100 questions

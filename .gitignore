@@ -1,6 +1,7 @@
 # See https://docs.github.com/en/get-started/getting-started-with-git/ignoring-files for more about ignoring files.
 
 data/catalogue/raw/opentdb/tokens/
+data/catalogue/scripts/opentdb/download_*.{log,txt}
 
 # compiled output
 dist

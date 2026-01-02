@@ -352,30 +352,11 @@ class OpenTDBDownloader:
                 )
                 break
             elif response_code == 4:  # Token empty - exhausted the token pool
-                logger.warning(
-                    f"Category {category_id}: ⚠ Session token exhausted (code 4) after {len(questions)} questions. "
-                    f"Resetting token and continuing..."
+                logger.info(
+                    f"Category {category_id}: Session token exhausted (code 4) after {len(questions)} questions. "
+                    f"This is normal - token can only serve a limited number of questions per 6-hour window."
                 )
-                # Reset token and continue downloading
-                if await self.reset_session_token(session, token):
-                    logger.info(
-                        f"Category {category_id}: Token reset successful, requesting new token..."
-                    )
-                    new_token = await self.get_session_token(session, category_id)
-                    if new_token:
-                        token = new_token
-                        logger.info(
-                            f"Category {category_id}: New token obtained, continuing download..."
-                        )
-                        continue  # Continue with the new token
-                    else:
-                        logger.error(
-                            f"Category {category_id}: ✗ Failed to get new token after reset"
-                        )
-                        break
-                else:
-                    logger.error(f"Category {category_id}: ✗ Failed to reset token")
-                    break
+                break
             else:
                 error_msg = self.RESPONSE_CODES.get(
                     response_code, f"Unknown error code {response_code}"

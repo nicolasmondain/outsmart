@@ -1,0 +1,18 @@
+{
+  "category_id": 25,
+  "category_name": "Art",
+  "download_timestamp": "2026-01-02T17:03:02.906640+00:00",
+  "questions": [],
+  "statistics": {
+    "total_questions": 0,
+    "by_difficulty": {
+      "easy": 0,
+      "medium": 0,
+      "hard": 0
+    },
+    "by_type": {
+      "multiple": 0,
+      "boolean": 0
+    }
+  }
+}
