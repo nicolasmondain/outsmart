@@ -384,33 +384,72 @@ class OpenTDBDownloader:
     async def download_category(
         self, session: aiohttp.ClientSession, category: Category, progress
     ) -> Dict:
-        """Download all questions for a specific category"""
+        """Download all questions for a specific category, appending to existing data."""
         category_name = self.sanitize_filename(category.name)
         category_dir = self.categories_dir / category_name
         category_dir.mkdir(exist_ok=True)
+        output_file = category_dir / "questions.json"
 
-        category_data = {
-            "category_id": category.id,
-            "category_name": category.name,
-            "download_timestamp": datetime.now(timezone.utc).isoformat(),
-            "questions": [],
-            "statistics": {
-                "total_questions": 0,
-                "by_difficulty": {"easy": 0, "medium": 0, "hard": 0},
-                "by_type": {"multiple": 0, "boolean": 0},
-            },
-        }
+        existing_questions_set = set()
+        if output_file.exists():
+            logger.info(f"Loading existing data for '{category.name}'.")
+            try:
+                with open(output_file, "r", encoding="utf-8") as f:
+                    category_data = json.load(f)
 
-        task_id = progress.add_task(f"[cyan]Downloading {category.name}...", total=None)
+                # Ensure base structure
+                if "questions" not in category_data:
+                    category_data["questions"] = []
+                if "statistics" not in category_data:
+                    category_data["statistics"] = {
+                        "total_questions": 0,
+                        "by_difficulty": {"easy": 0, "medium": 0, "hard": 0},
+                        "by_type": {"multiple": 0, "boolean": 0},
+                    }
 
-        # Download all questions for this category (all difficulties)
-        all_questions = await self.download_questions(session, category.id)
+                # Create a set of existing question strings for efficient duplicate checking
+                existing_questions_set = {
+                    q["question"] for q in category_data.get("questions", [])
+                }
+                logger.info(
+                    f"Found {len(existing_questions_set)} existing questions for '{category.name}'."
+                )
+            except (json.JSONDecodeError, IOError) as e:
+                logger.warning(
+                    f"Could not read or parse {output_file}, starting fresh for this category. Error: {e}"
+                )
+                category_data = {}  # Will be re-initialized below
+        else:
+            category_data = {}
 
-        if all_questions:
+        # Initialize if not loaded
+        if not category_data:
+            category_data = {
+                "category_id": category.id,
+                "category_name": category.name,
+                "questions": [],
+                "statistics": {
+                    "total_questions": 0,
+                    "by_difficulty": {"easy": 0, "medium": 0, "hard": 0},
+                    "by_type": {"multiple": 0, "boolean": 0},
+                },
+            }
+
+        # Always update timestamp
+        category_data["download_timestamp"] = datetime.now(timezone.utc).isoformat()
+
+        task_id = progress.add_task(
+            f"[cyan]Downloading new questions for {category.name}...", total=None
+        )
+
+        # Download new questions
+        new_questions_raw = await self.download_questions(session, category.id)
+
+        newly_added_count = 0
+        if new_questions_raw:
             # Process and decode questions
-            for q_data in all_questions:
+            for q_data in new_questions_raw:
                 try:
-                    # Decode base64 encoded fields
                     import base64
 
                     decoded_question = {
@@ -433,23 +472,38 @@ class OpenTDBDownloader:
                         ],
                     }
 
-                    category_data["questions"].append(decoded_question)
-
-                    # Update statistics
-                    category_data["statistics"]["total_questions"] += 1
-                    category_data["statistics"]["by_difficulty"][
-                        decoded_question["difficulty"]
-                    ] += 1
-                    category_data["statistics"]["by_type"][
-                        decoded_question["type"]
-                    ] += 1
+                    # Add question only if it's new
+                    if decoded_question["question"] not in existing_questions_set:
+                        category_data["questions"].append(decoded_question)
+                        existing_questions_set.add(decoded_question["question"])
+                        newly_added_count += 1
 
                 except Exception as e:
-                    logger.error(f"Failed to decode question: {e}")
+                    logger.error(f"Failed to decode or process question: {e}")
                     continue
 
-        # Save category data
-        output_file = category_dir / "questions.json"
+        if newly_added_count > 0:
+            logger.info(
+                f"Added {newly_added_count} new unique questions for '{category.name}'."
+            )
+        else:
+            logger.info(f"No new unique questions found for '{category.name}'.")
+
+        # Recalculate statistics from scratch to ensure accuracy
+        stats = {
+            "total_questions": 0,
+            "by_difficulty": {"easy": 0, "medium": 0, "hard": 0},
+            "by_type": {"multiple": 0, "boolean": 0},
+        }
+        for q in category_data["questions"]:
+            stats["total_questions"] += 1
+            if q["difficulty"] in stats["by_difficulty"]:
+                stats["by_difficulty"][q["difficulty"]] += 1
+            if q["type"] in stats["by_type"]:
+                stats["by_type"][q["type"]] += 1
+        category_data["statistics"] = stats
+
+        # Save updated category data
         with open(output_file, "w", encoding="utf-8") as f:
             json.dump(category_data, f, indent=2, ensure_ascii=False)
 
@@ -458,7 +512,7 @@ class OpenTDBDownloader:
         progress.remove_task(task_id)
 
         self.stats.completed_categories += 1
-        self.stats.downloaded_questions += len(category_data["questions"])
+        self.stats.downloaded_questions += newly_added_count
 
         return category_data
 
