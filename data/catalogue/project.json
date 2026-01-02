@@ -3,45 +3,8 @@
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "data/catalogue/scripts",
   "projectType": "application",
-  "tags": ["type:data", "platform:python", "platform:node"],
+  "tags": ["type:data", "platform:python"],
   "targets": {
-    "build": {
-      "executor": "@nx/js:tsc",
-      "outputs": ["{options.outputPath}"],
-      "options": {
-        "outputPath": "data/catalogue/dist",
-        "main": "data/catalogue/scripts/validate.ts",
-        "tsConfig": "data/catalogue/tsconfig.json"
-      }
-    },
-    "validate": {
-      "executor": "nx:run-commands",
-      "options": {
-        "command": "ts-node scripts/validate.ts",
-        "cwd": "data/catalogue"
-      }
-    },
-    "generate": {
-      "executor": "nx:run-commands",
-      "options": {
-        "command": "ts-node scripts/generate.ts",
-        "cwd": "data/catalogue"
-      }
-    },
-    "sync": {
-      "executor": "nx:run-commands",
-      "options": {
-        "command": "ts-node scripts/sync.ts",
-        "cwd": "data/catalogue"
-      }
-    },
-    "dev": {
-      "executor": "nx:run-commands",
-      "options": {
-        "command": "ts-node-dev --respawn scripts/dev.ts",
-        "cwd": "data/catalogue"
-      }
-    },
     "python:install": {
       "executor": "nx:run-commands",
       "options": {
@@ -49,86 +12,68 @@
         "cwd": "data/catalogue"
       }
     },
-    "python:run": {
+    "python:install-dev": {
       "executor": "nx:run-commands",
       "options": {
-        "command": "python scripts/main.py",
+        "command": "pip install -r requirements.txt && pip install -e .",
         "cwd": "data/catalogue"
       }
     },
-    "python:refresh": {
+    "opentdb:download": {
       "executor": "nx:run-commands",
       "options": {
-        "command": "python scripts/main.py refresh",
+        "command": "python scripts/opentdb/downloader.py",
         "cwd": "data/catalogue"
       }
     },
-    "python:stats": {
+    "opentdb:download-reset": {
       "executor": "nx:run-commands",
       "options": {
-        "command": "python scripts/main.py stats",
+        "command": "python scripts/opentdb/downloader.py --reset-tokens",
         "cwd": "data/catalogue"
       }
     },
-    "python:validate": {
+    "opentdb:dry-run": {
       "executor": "nx:run-commands",
       "options": {
-        "command": "python scripts/main.py validate",
+        "command": "python scripts/opentdb/downloader.py --dry-run",
         "cwd": "data/catalogue"
       }
     },
-    "python:test-ollama": {
+    "opentdb:status": {
       "executor": "nx:run-commands",
       "options": {
-        "command": "python scripts/main.py test-ollama",
+        "command": "ls -la raw/opentdb/ && find raw/opentdb/ -name '*.json' | wc -l",
         "cwd": "data/catalogue"
       }
     },
-    "ollama:pull": {
+    "opentdb:clean": {
       "executor": "nx:run-commands",
       "options": {
-        "command": "ollama pull llama2",
+        "command": "rm -rf raw/opentdb/* && echo 'OpenTDB data cleaned'",
         "cwd": "data/catalogue"
       }
     },
-    "ollama:serve": {
+    "lint:python": {
       "executor": "nx:run-commands",
       "options": {
-        "command": "ollama serve",
-        "cwd": "data/catalogue"
-      }
-    },
-    "lint": {
-      "executor": "nx:run-commands",
-      "options": {
-        "commands": [
-          "flake8 scripts/",
-          "mypy scripts/",
-          "black --check scripts/"
-        ],
+        "commands": ["flake8 scripts/", "black --check scripts/"],
         "cwd": "data/catalogue",
         "parallel": false
       }
     },
-    "format": {
+    "format:python": {
       "executor": "nx:run-commands",
       "options": {
         "command": "black scripts/",
         "cwd": "data/catalogue"
       }
     },
-    "test": {
+    "test:python": {
       "executor": "nx:run-commands",
       "options": {
-        "command": "pytest",
+        "command": "pytest scripts/ -v",
         "cwd": "data/catalogue"
-      }
-    },
-    "typecheck": {
-      "executor": "@nx/js:tsc",
-      "options": {
-        "tsConfig": "data/catalogue/tsconfig.json",
-        "noEmit": true
       }
     }
   }

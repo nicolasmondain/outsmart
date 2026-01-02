@@ -1,31 +1,36 @@
 {
   "name": "@outsmart/catalogue",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "private": true,
-  "description": "Data catalogue with Python scripts and Ollama integration, plus TypeScript validation scripts",
+  "description": "Data catalogue with OpenTDB trivia questions downloader",
   "scripts": {
-    "validate": "ts-node scripts/validate.ts",
-    "generate": "ts-node scripts/generate.ts",
-    "sync": "ts-node scripts/sync.ts",
-    "build": "tsc",
-    "dev": "ts-node-dev --respawn scripts/dev.ts",
-    "python:install": "pip install -r requirements.txt",
-    "python:run": "python scripts/main.py",
-    "ollama:pull": "ollama pull llama2",
-    "ollama:serve": "ollama serve"
+    "install:python": "pip install -r requirements.txt",
+    "download": "python scripts/opentdb/downloader.py",
+    "download:reset": "python scripts/opentdb/downloader.py --reset-tokens",
+    "download:dry-run": "python scripts/opentdb/downloader.py --dry-run",
+    "clean": "rm -rf raw/opentdb/*",
+    "status": "ls -la raw/opentdb/",
+    "lint": "flake8 scripts/ && black --check scripts/",
+    "format": "black scripts/",
+    "test": "pytest scripts/ -v"
   },
-  "dependencies": {
-    "axios": "^1.6.0",
-    "dotenv": "^16.3.0",
-    "fs-extra": "^11.1.0",
-    "joi": "^17.11.0",
-    "yaml": "^2.3.0"
+  "keywords": [
+    "opentdb",
+    "trivia",
+    "questions",
+    "data",
+    "python",
+    "downloader"
+  ],
+  "engines": {
+    "node": ">=18.0.0",
+    "python": ">=3.8.0"
   },
-  "devDependencies": {
-    "@types/fs-extra": "^11.0.0",
-    "@types/node": "^20.0.0",
-    "ts-node": "^10.9.0",
-    "ts-node-dev": "^2.0.0",
-    "typescript": "^5.1.0"
-  }
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/outsmart/outsmart",
+    "directory": "data/catalogue"
+  },
+  "author": "Outsmart Team",
+  "license": "MIT"
 }

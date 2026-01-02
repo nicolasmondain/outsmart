@@ -1,0 +1,433 @@
+OpenTDB Question Downloader
+Output directory: 
+/Users/nicolas.m/Documents/repositories/github/outsmart/data/catalogue/raw/opent
+db
+Downloading only category ID: 9
+[16:56:42] INFO     Starting download for category ID: 9       downloader.py:557
+           INFO     Fetching categories...                     downloader.py:213
+/Users/nicolas.m/Documents/repositories/github/outsmart/data/catalogue/scripts/opentdb/downloader.py:228: PydanticDeprecatedSince20: The `dict` method is deprecated; use `model_dump` instead. Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.12/migration/
+  json.dump([cat.dict() for cat in categories], f, indent=2)
+[16:56:43] INFO     Found 24 categories                        downloader.py:230
+
+Category: General Knowledge
+Available questions: 401
+  - Easy: 191
+  - Medium: 147
+  - Hard: 63
+[16:56:53] INFO     Category 9: Starting recursive download    downloader.py:274
+                    with token 2690d792e7...                                    
+           INFO     Category 9: Requesting batch #1...         downloader.py:283
+[16:56:58] ERROR    HTTP 429 for https://opentdb.com/api.php   downloader.py:155
+           WARNING  Category 9: Rate limit or network error on downloader.py:311
+                    batch #1. Retry 1/3 after 10s...                            
+[16:57:08] INFO     Category 9: Batch #1 - Response code: 0,   downloader.py:328
+                    Results: 50 questions                                       
+           INFO     Category 9: ✓ Downloaded batch of 50       downloader.py:336
+                    questions (total so far: 50)                                
+           INFO     Category 9: Continuing to next batch...    downloader.py:340
+           INFO     Category 9: Requesting batch #2...         downloader.py:283
+[16:57:13] INFO     Category 9: Batch #2 - Response code: 0,   downloader.py:328
+                    Results: 50 questions                                       
+           INFO     Category 9: ✓ Downloaded batch of 50       downloader.py:336
+                    questions (total so far: 100)                               
+           INFO     Category 9: Continuing to next batch...    downloader.py:340
+           INFO     Category 9: Requesting batch #3...         downloader.py:283
+[16:57:18] INFO     Category 9: Batch #3 - Response code: 0,   downloader.py:328
+                    Results: 50 questions                                       
+           INFO     Category 9: ✓ Downloaded batch of 50       downloader.py:336
+                    questions (total so far: 150)                               
+           INFO     Category 9: Continuing to next batch...    downloader.py:340
+           INFO     Category 9: Requesting batch #4...         downloader.py:283
+[16:57:23] INFO     Category 9: Batch #4 - Response code: 0,   downloader.py:328
+                    Results: 50 questions                                       
+           INFO     Category 9: ✓ Downloaded batch of 50       downloader.py:336
+                    questions (total so far: 200)                               
+           INFO     Category 9: Continuing to next batch...    downloader.py:340
+           INFO     Category 9: Requesting batch #5...         downloader.py:283
+[16:57:29] INFO     Category 9: Batch #5 - Response code: 0,   downloader.py:328
+                    Results: 50 questions                                       
+           INFO     Category 9: ✓ Downloaded batch of 50       downloader.py:336
+                    questions (total so far: 250)                               
+           INFO     Category 9: Continuing to next batch...    downloader.py:340
+           INFO     Category 9: Requesting batch #6...         downloader.py:283
+[16:57:37] INFO     Category 9: Batch #6 - Response code: 0,   downloader.py:328
+                    Results: 50 questions                                       
+           INFO     Category 9: ✓ Downloaded batch of 50       downloader.py:336
+                    questions (total so far: 300)                               
+           INFO     Category 9: Continuing to next batch...    downloader.py:340
+           INFO     Category 9: Requesting batch #7...         downloader.py:283
+[16:57:39] INFO     Category 9: Batch #7 - Response code: 0,   downloader.py:328
+                    Results: 50 questions                                       
+           INFO     Category 9: ✓ Downloaded batch of 50       downloader.py:336
+                    questions (total so far: 350)                               
+           INFO     Category 9: Continuing to next batch...    downloader.py:340
+           INFO     Category 9: Requesting batch #8...         downloader.py:283
+[16:57:44] INFO     Category 9: Batch #8 - Response code: 0,   downloader.py:328
+                    Results: 50 questions                                       
+           INFO     Category 9: ✓ Downloaded batch of 50       downloader.py:336
+                    questions (total so far: 400)                               
+           INFO     Category 9: Continuing to next batch...    downloader.py:340
+           INFO     Category 9: Requesting batch #9...         downloader.py:283
+[16:57:49] INFO     Category 9: Batch #9 - Response code: 4,   downloader.py:328
+                    Results: 0 questions                                        
+           WARNING  Category 9: ⚠ Session token exhausted      downloader.py:355
+                    (code 4) after 400 questions. Resetting                     
+                    token and continuing...                                     
+[16:57:54] INFO     Category 9: Token reset successful,        downloader.py:361
+                    requesting new token...                                     
+[16:57:59] INFO     Category 9: New token obtained, continuing downloader.py:367
+                    download...                                                 
+           INFO     Category 9: Requesting batch #10...        downloader.py:283
+[16:58:04] INFO     Category 9: Batch #10 - Response code: 0,  downloader.py:328
+                    Results: 50 questions                                       
+           INFO     Category 9: ✓ Downloaded batch of 50       downloader.py:336
+                    questions (total so far: 450)                               
+           INFO     Category 9: Continuing to next batch...    downloader.py:340
+           INFO     Category 9: Requesting batch #11...        downloader.py:283
+[16:58:10] INFO     Category 9: Batch #11 - Response code: 0,  downloader.py:328
+                    Results: 50 questions                                       
+           INFO     Category 9: ✓ Downloaded batch of 50       downloader.py:336
+                    questions (total so far: 500)                               
+           INFO     Category 9: Continuing to next batch...    downloader.py:340
+           INFO     Category 9: Requesting batch #12...        downloader.py:283
+[16:58:14] INFO     Category 9: Batch #12 - Response code: 0,  downloader.py:328
+                    Results: 50 questions                                       
+           INFO     Category 9: ✓ Downloaded batch of 50       downloader.py:336
+                    questions (total so far: 550)                               
+           INFO     Category 9: Continuing to next batch...    downloader.py:340
+           INFO     Category 9: Requesting batch #13...        downloader.py:283
+[16:58:20] INFO     Category 9: Batch #13 - Response code: 0,  downloader.py:328
+                    Results: 50 questions                                       
+           INFO     Category 9: ✓ Downloaded batch of 50       downloader.py:336
+                    questions (total so far: 600)                               
+           INFO     Category 9: Continuing to next batch...    downloader.py:340
+           INFO     Category 9: Requesting batch #14...        downloader.py:283
+[16:58:24] ERROR    HTTP 429 for https://opentdb.com/api.php   downloader.py:155
+           WARNING  Category 9: Rate limit or network error on downloader.py:311
+                    batch #14. Retry 1/3 after 10s...                           
+[16:58:35] INFO     Category 9: Batch #14 - Response code: 0,  downloader.py:328
+                    Results: 50 questions                                       
+           INFO     Category 9: ✓ Downloaded batch of 50       downloader.py:336
+                    questions (total so far: 650)                               
+           INFO     Category 9: Continuing to next batch...    downloader.py:340
+           INFO     Category 9: Requesting batch #15...        downloader.py:283
+[16:58:40] INFO     Category 9: Batch #15 - Response code: 0,  downloader.py:328
+                    Results: 50 questions                                       
+           INFO     Category 9: ✓ Downloaded batch of 50       downloader.py:336
+                    questions (total so far: 700)                               
+           INFO     Category 9: Continuing to next batch...    downloader.py:340
+           INFO     Category 9: Requesting batch #16...        downloader.py:283
+[16:58:45] INFO     Category 9: Batch #16 - Response code: 0,  downloader.py:328
+                    Results: 50 questions                                       
+           INFO     Category 9: ✓ Downloaded batch of 50       downloader.py:336
+                    questions (total so far: 750)                               
+           INFO     Category 9: Continuing to next batch...    downloader.py:340
+           INFO     Category 9: Requesting batch #17...        downloader.py:283
+[16:58:50] INFO     Category 9: Batch #17 - Response code: 0,  downloader.py:328
+                    Results: 50 questions                                       
+           INFO     Category 9: ✓ Downloaded batch of 50       downloader.py:336
+                    questions (total so far: 800)                               
+           INFO     Category 9: Continuing to next batch...    downloader.py:340
+           INFO     Category 9: Requesting batch #18...        downloader.py:283
+[16:58:55] INFO     Category 9: Batch #18 - Response code: 4,  downloader.py:328
+                    Results: 0 questions                                        
+           WARNING  Category 9: ⚠ Session token exhausted      downloader.py:355
+                    (code 4) after 800 questions. Resetting                     
+                    token and continuing...                                     
+[16:59:00] INFO     Category 9: Token reset successful,        downloader.py:361
+                    requesting new token...                                     
+[16:59:05] INFO     Category 9: New token obtained, continuing downloader.py:367
+                    download...                                                 
+           INFO     Category 9: Requesting batch #19...        downloader.py:283
+[16:59:10] INFO     Category 9: Batch #19 - Response code: 0,  downloader.py:328
+                    Results: 50 questions                                       
+           INFO     Category 9: ✓ Downloaded batch of 50       downloader.py:336
+                    questions (total so far: 850)                               
+           INFO     Category 9: Continuing to next batch...    downloader.py:340
+           INFO     Category 9: Requesting batch #20...        downloader.py:283
+[16:59:16] INFO     Category 9: Batch #20 - Response code: 0,  downloader.py:328
+                    Results: 50 questions                                       
+           INFO     Category 9: ✓ Downloaded batch of 50       downloader.py:336
+                    questions (total so far: 900)                               
+           INFO     Category 9: Continuing to next batch...    downloader.py:340
+           INFO     Category 9: Requesting batch #21...        downloader.py:283
+[16:59:20] ERROR    HTTP 429 for https://opentdb.com/api.php   downloader.py:155
+           WARNING  Category 9: Rate limit or network error on downloader.py:311
+                    batch #21. Retry 1/3 after 10s...                           
+[16:59:31] INFO     Category 9: Batch #21 - Response code: 0,  downloader.py:328
+                    Results: 50 questions                                       
+           INFO     Category 9: ✓ Downloaded batch of 50       downloader.py:336
+                    questions (total so far: 950)                               
+           INFO     Category 9: Continuing to next batch...    downloader.py:340
+           INFO     Category 9: Requesting batch #22...        downloader.py:283
+[16:59:36] INFO     Category 9: Batch #22 - Response code: 0,  downloader.py:328
+                    Results: 50 questions                                       
+           INFO     Category 9: ✓ Downloaded batch of 50       downloader.py:336
+                    questions (total so far: 1000)                              
+           INFO     Category 9: Continuing to next batch...    downloader.py:340
+           INFO     Category 9: Requesting batch #23...        downloader.py:283
+[16:59:41] INFO     Category 9: Batch #23 - Response code: 0,  downloader.py:328
+                    Results: 50 questions                                       
+           INFO     Category 9: ✓ Downloaded batch of 50       downloader.py:336
+                    questions (total so far: 1050)                              
+           INFO     Category 9: Continuing to next batch...    downloader.py:340
+           INFO     Category 9: Requesting batch #24...        downloader.py:283
+[16:59:46] INFO     Category 9: Batch #24 - Response code: 0,  downloader.py:328
+                    Results: 50 questions                                       
+           INFO     Category 9: ✓ Downloaded batch of 50       downloader.py:336
+                    questions (total so far: 1100)                              
+           INFO     Category 9: Continuing to next batch...    downloader.py:340
+           INFO     Category 9: Requesting batch #25...        downloader.py:283
+[16:59:51] INFO     Category 9: Batch #25 - Response code: 0,  downloader.py:328
+                    Results: 50 questions                                       
+           INFO     Category 9: ✓ Downloaded batch of 50       downloader.py:336
+                    questions (total so far: 1150)                              
+           INFO     Category 9: Continuing to next batch...    downloader.py:340
+           INFO     Category 9: Requesting batch #26...        downloader.py:283
+[16:59:56] INFO     Category 9: Batch #26 - Response code: 0,  downloader.py:328
+                    Results: 50 questions                                       
+           INFO     Category 9: ✓ Downloaded batch of 50       downloader.py:336
+                    questions (total so far: 1200)                              
+           INFO     Category 9: Continuing to next batch...    downloader.py:340
+           INFO     Category 9: Requesting batch #27...        downloader.py:283
+[17:00:01] INFO     Category 9: Batch #27 - Response code: 4,  downloader.py:328
+                    Results: 0 questions                                        
+           WARNING  Category 9: ⚠ Session token exhausted      downloader.py:355
+                    (code 4) after 1200 questions. Resetting                    
+                    token and continuing...                                     
+[17:00:06] INFO     Category 9: Token reset successful,        downloader.py:361
+                    requesting new token...                                     
+[17:00:12] INFO     Category 9: New token obtained, continuing downloader.py:367
+                    download...                                                 
+           INFO     Category 9: Requesting batch #28...        downloader.py:283
+[17:00:17] INFO     Category 9: Batch #28 - Response code: 0,  downloader.py:328
+                    Results: 50 questions                                       
+           INFO     Category 9: ✓ Downloaded batch of 50       downloader.py:336
+                    questions (total so far: 1250)                              
+           INFO     Category 9: Continuing to next batch...    downloader.py:340
+           INFO     Category 9: Requesting batch #29...        downloader.py:283
+[17:00:22] INFO     Category 9: Batch #29 - Response code: 0,  downloader.py:328
+                    Results: 50 questions                                       
+           INFO     Category 9: ✓ Downloaded batch of 50       downloader.py:336
+                    questions (total so far: 1300)                              
+           INFO     Category 9: Continuing to next batch...    downloader.py:340
+           INFO     Category 9: Requesting batch #30...        downloader.py:283
+[17:00:27] INFO     Category 9: Batch #30 - Response code: 0,  downloader.py:328
+                    Results: 50 questions                                       
+           INFO     Category 9: ✓ Downloaded batch of 50       downloader.py:336
+                    questions (total so far: 1350)                              
+           INFO     Category 9: Continuing to next batch...    downloader.py:340
+           INFO     Category 9: Requesting batch #31...        downloader.py:283
+[17:00:32] INFO     Category 9: Batch #31 - Response code: 0,  downloader.py:328
+                    Results: 50 questions                                       
+           INFO     Category 9: ✓ Downloaded batch of 50       downloader.py:336
+                    questions (total so far: 1400)                              
+           INFO     Category 9: Continuing to next batch...    downloader.py:340
+           INFO     Category 9: Requesting batch #32...        downloader.py:283
+[17:00:37] INFO     Category 9: Batch #32 - Response code: 0,  downloader.py:328
+                    Results: 50 questions                                       
+           INFO     Category 9: ✓ Downloaded batch of 50       downloader.py:336
+                    questions (total so far: 1450)                              
+           INFO     Category 9: Continuing to next batch...    downloader.py:340
+           INFO     Category 9: Requesting batch #33...        downloader.py:283
+[17:00:42] INFO     Category 9: Batch #33 - Response code: 0,  downloader.py:328
+                    Results: 50 questions                                       
+           INFO     Category 9: ✓ Downloaded batch of 50       downloader.py:336
+                    questions (total so far: 1500)                              
+           INFO     Category 9: Continuing to next batch...    downloader.py:340
+           INFO     Category 9: Requesting batch #34...        downloader.py:283
+[17:00:47] INFO     Category 9: Batch #34 - Response code: 0,  downloader.py:328
+                    Results: 50 questions                                       
+           INFO     Category 9: ✓ Downloaded batch of 50       downloader.py:336
+                    questions (total so far: 1550)                              
+           INFO     Category 9: Continuing to next batch...    downloader.py:340
+           INFO     Category 9: Requesting batch #35...        downloader.py:283
+[17:00:53] INFO     Category 9: Batch #35 - Response code: 0,  downloader.py:328
+                    Results: 50 questions                                       
+           INFO     Category 9: ✓ Downloaded batch of 50       downloader.py:336
+                    questions (total so far: 1600)                              
+           INFO     Category 9: Continuing to next batch...    downloader.py:340
+           INFO     Category 9: Requesting batch #36...        downloader.py:283
+[17:00:57] ERROR    HTTP 429 for https://opentdb.com/api.php   downloader.py:155
+           WARNING  Category 9: Rate limit or network error on downloader.py:311
+                    batch #36. Retry 1/3 after 10s...                           
+[17:01:08] INFO     Category 9: Batch #36 - Response code: 4,  downloader.py:328
+                    Results: 0 questions                                        
+           WARNING  Category 9: ⚠ Session token exhausted      downloader.py:355
+                    (code 4) after 1600 questions. Resetting                    
+                    token and continuing...                                     
+[17:01:13] INFO     Category 9: Token reset successful,        downloader.py:361
+                    requesting new token...                                     
+[17:01:18] INFO     Category 9: New token obtained, continuing downloader.py:367
+                    download...                                                 
+           INFO     Category 9: Requesting batch #37...        downloader.py:283
+[17:01:23] INFO     Category 9: Batch #37 - Response code: 0,  downloader.py:328
+                    Results: 50 questions                                       
+           INFO     Category 9: ✓ Downloaded batch of 50       downloader.py:336
+                    questions (total so far: 1650)                              
+           INFO     Category 9: Continuing to next batch...    downloader.py:340
+           INFO     Category 9: Requesting batch #38...        downloader.py:283
+[17:01:28] INFO     Category 9: Batch #38 - Response code: 0,  downloader.py:328
+                    Results: 50 questions                                       
+           INFO     Category 9: ✓ Downloaded batch of 50       downloader.py:336
+                    questions (total so far: 1700)                              
+           INFO     Category 9: Continuing to next batch...    downloader.py:340
+           INFO     Category 9: Requesting batch #39...        downloader.py:283
+[17:01:33] INFO     Category 9: Batch #39 - Response code: 0,  downloader.py:328
+                    Results: 50 questions                                       
+           INFO     Category 9: ✓ Downloaded batch of 50       downloader.py:336
+                    questions (total so far: 1750)                              
+           INFO     Category 9: Continuing to next batch...    downloader.py:340
+           INFO     Category 9: Requesting batch #40...        downloader.py:283
+[17:01:38] INFO     Category 9: Batch #40 - Response code: 0,  downloader.py:328
+                    Results: 50 questions                                       
+           INFO     Category 9: ✓ Downloaded batch of 50       downloader.py:336
+                    questions (total so far: 1800)                              
+           INFO     Category 9: Continuing to next batch...    downloader.py:340
+           INFO     Category 9: Requesting batch #41...        downloader.py:283
+[17:01:43] INFO     Category 9: Batch #41 - Response code: 0,  downloader.py:328
+                    Results: 50 questions                                       
+           INFO     Category 9: ✓ Downloaded batch of 50       downloader.py:336
+                    questions (total so far: 1850)                              
+           INFO     Category 9: Continuing to next batch...    downloader.py:340
+           INFO     Category 9: Requesting batch #42...        downloader.py:283
+[17:01:49] INFO     Category 9: Batch #42 - Response code: 0,  downloader.py:328
+                    Results: 50 questions                                       
+           INFO     Category 9: ✓ Downloaded batch of 50       downloader.py:336
+                    questions (total so far: 1900)                              
+           INFO     Category 9: Continuing to next batch...    downloader.py:340
+           INFO     Category 9: Requesting batch #43...        downloader.py:283
+[17:01:53] ERROR    HTTP 429 for https://opentdb.com/api.php   downloader.py:155
+           WARNING  Category 9: Rate limit or network error on downloader.py:311
+                    batch #43. Retry 1/3 after 10s...                           
+[17:02:04] INFO     Category 9: Batch #43 - Response code: 0,  downloader.py:328
+                    Results: 50 questions                                       
+           INFO     Category 9: ✓ Downloaded batch of 50       downloader.py:336
+                    questions (total so far: 1950)                              
+           INFO     Category 9: Continuing to next batch...    downloader.py:340
+           INFO     Category 9: Requesting batch #44...        downloader.py:283
+[17:02:09] INFO     Category 9: Batch #44 - Response code: 0,  downloader.py:328
+                    Results: 50 questions                                       
+           INFO     Category 9: ✓ Downloaded batch of 50       downloader.py:336
+                    questions (total so far: 2000)                              
+           INFO     Category 9: Continuing to next batch...    downloader.py:340
+           INFO     Category 9: Requesting batch #45...        downloader.py:283
+[17:02:14] INFO     Category 9: Batch #45 - Response code: 4,  downloader.py:328
+                    Results: 0 questions                                        
+           WARNING  Category 9: ⚠ Session token exhausted      downloader.py:355
+                    (code 4) after 2000 questions. Resetting                    
+                    token and continuing...                                     
+[17:02:19] INFO     Category 9: Token reset successful,        downloader.py:361
+                    requesting new token...                                     
+[17:02:24] INFO     Category 9: New token obtained, continuing downloader.py:367
+                    download...                                                 
+           INFO     Category 9: Requesting batch #46...        downloader.py:283
+[17:02:29] INFO     Category 9: Batch #46 - Response code: 0,  downloader.py:328
+                    Results: 50 questions                                       
+           INFO     Category 9: ✓ Downloaded batch of 50       downloader.py:336
+                    questions (total so far: 2050)                              
+           INFO     Category 9: Continuing to next batch...    downloader.py:340
+           INFO     Category 9: Requesting batch #47...        downloader.py:283
+[17:02:35] INFO     Category 9: Batch #47 - Response code: 0,  downloader.py:328
+                    Results: 50 questions                                       
+           INFO     Category 9: ✓ Downloaded batch of 50       downloader.py:336
+                    questions (total so far: 2100)                              
+           INFO     Category 9: Continuing to next batch...    downloader.py:340
+           INFO     Category 9: Requesting batch #48...        downloader.py:283
+[17:02:39] INFO     Category 9: Batch #48 - Response code: 0,  downloader.py:328
+                    Results: 50 questions                                       
+           INFO     Category 9: ✓ Downloaded batch of 50       downloader.py:336
+                    questions (total so far: 2150)                              
+           INFO     Category 9: Continuing to next batch...    downloader.py:340
+           INFO     Category 9: Requesting batch #49...        downloader.py:283
+[17:02:45] INFO     Category 9: Batch #49 - Response code: 0,  downloader.py:328
+                    Results: 50 questions                                       
+           INFO     Category 9: ✓ Downloaded batch of 50       downloader.py:336
+                    questions (total so far: 2200)                              
+           INFO     Category 9: Continuing to next batch...    downloader.py:340
+           INFO     Category 9: Requesting batch #50...        downloader.py:283
+[17:02:49] ERROR    HTTP 429 for https://opentdb.com/api.php   downloader.py:155
+           WARNING  Category 9: Rate limit or network error on downloader.py:311
+                    batch #50. Retry 1/3 after 10s...                           
+[17:03:00] INFO     Category 9: Batch #50 - Response code: 0,  downloader.py:328
+                    Results: 50 questions                                       
+           INFO     Category 9: ✓ Downloaded batch of 50       downloader.py:336
+                    questions (total so far: 2250)                              
+           INFO     Category 9: Continuing to next batch...    downloader.py:340
+           INFO     Category 9: Requesting batch #51...        downloader.py:283
+[17:03:05] INFO     Category 9: Batch #51 - Response code: 0,  downloader.py:328
+                    Results: 50 questions                                       
+           INFO     Category 9: ✓ Downloaded batch of 50       downloader.py:336
+                    questions (total so far: 2300)                              
+           INFO     Category 9: Continuing to next batch...    downloader.py:340
+           INFO     Category 9: Requesting batch #52...        downloader.py:283
+[17:03:10] INFO     Category 9: Batch #52 - Response code: 0,  downloader.py:328
+                    Results: 50 questions                                       
+           INFO     Category 9: ✓ Downloaded batch of 50       downloader.py:336
+                    questions (total so far: 2350)                              
+           INFO     Category 9: Continuing to next batch...    downloader.py:340
+           INFO     Category 9: Requesting batch #53...        downloader.py:283
+[17:03:15] INFO     Category 9: Batch #53 - Response code: 0,  downloader.py:328
+                    Results: 50 questions                                       
+           INFO     Category 9: ✓ Downloaded batch of 50       downloader.py:336
+                    questions (total so far: 2400)                              
+           INFO     Category 9: Continuing to next batch...    downloader.py:340
+           INFO     Category 9: Requesting batch #54...        downloader.py:283
+[17:03:20] INFO     Category 9: Batch #54 - Response code: 4,  downloader.py:328
+                    Results: 0 questions                                        
+           WARNING  Category 9: ⚠ Session token exhausted      downloader.py:355
+                    (code 4) after 2400 questions. Resetting                    
+                    token and continuing...                                     
+[17:03:25] INFO     Category 9: Token reset successful,        downloader.py:361
+                    requesting new token...                                     
+[17:03:30] INFO     Category 9: New token obtained, continuing downloader.py:367
+                    download...                                                 
+           INFO     Category 9: Requesting batch #55...        downloader.py:283
+[17:03:35] INFO     Category 9: Batch #55 - Response code: 0,  downloader.py:328
+                    Results: 50 questions                                       
+           INFO     Category 9: ✓ Downloaded batch of 50       downloader.py:336
+                    questions (total so far: 2450)                              
+           INFO     Category 9: Continuing to next batch...    downloader.py:340
+           INFO     Category 9: Requesting batch #56...        downloader.py:283
+[17:03:41] INFO     Category 9: Batch #56 - Response code: 0,  downloader.py:328
+                    Results: 50 questions                                       
+           INFO     Category 9: ✓ Downloaded batch of 50       downloader.py:336
+                    questions (total so far: 2500)                              
+           INFO     Category 9: Continuing to next batch...    downloader.py:340
+           INFO     Category 9: Requesting batch #57...        downloader.py:283
+[17:03:46] INFO     Category 9: Batch #57 - Response code: 0,  downloader.py:328
+                    Results: 50 questions                                       
+           INFO     Category 9: ✓ Downloaded batch of 50       downloader.py:336
+                    questions (total so far: 2550)                              
+           INFO     Category 9: Continuing to next batch...    downloader.py:340
+           INFO     Category 9: Requesting batch #58...        downloader.py:283
+[17:03:51] INFO     Category 9: Batch #58 - Response code: 0,  downloader.py:328
+                    Results: 50 questions                                       
+           INFO     Category 9: ✓ Downloaded batch of 50       downloader.py:336
+                    questions (total so far: 2600)                              
+           INFO     Category 9: Continuing to next batch...    downloader.py:340
+           INFO     Category 9: Requesting batch #59...        downloader.py:283
+[17:03:56] INFO     Category 9: Batch #59 - Response code: 0,  downloader.py:328
+                    Results: 50 questions                                       
+           INFO     Category 9: ✓ Downloaded batch of 50       downloader.py:336
+                    questions (total so far: 2650)                              
+           INFO     Category 9: Continuing to next batch...    downloader.py:340
+           INFO     Category 9: Requesting batch #60...        downloader.py:283
+[17:04:01] INFO     Category 9: Batch #60 - Response code: 0,  downloader.py:328
+                    Results: 50 questions                                       
+           INFO     Category 9: ✓ Downloaded batch of 50       downloader.py:336
+                    questions (total so far: 2700)                              
+           INFO     Category 9: Continuing to next batch...    downloader.py:340
+           INFO     Category 9: Requesting batch #61...        downloader.py:283
+[17:04:06] INFO     Category 9: Batch #61 - Response code: 0,  downloader.py:328
+                    Results: 50 questions                                       
+           INFO     Category 9: ✓ Downloaded batch of 50       downloader.py:336
+                    questions (total so far: 2750)                              
+           INFO     Category 9: Continuing to next batch...    downloader.py:340
+           INFO     Category 9: Requesting batch #62...        downloader.py:283
+[17:04:11] INFO     Category 9: Batch #62 - Response code: 0,  downloader.py:328
+                    Results: 50 questions                                       
+           INFO     Category 9: ✓ Downloaded batch of 50       downloader.py:336
+                    questions (total so far: 2800)                              
+           INFO     Category 9: Continuing to next batch...    downloader.py:340
+           INFO     Category 9: Requesting batch #63...        downloader.py:283
