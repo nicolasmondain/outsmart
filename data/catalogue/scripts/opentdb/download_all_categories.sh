@@ -112,7 +112,7 @@ for i in "${!CATEGORIES[@]}"; do
     # Use tee to show output AND log it
     log_info "Starting download for category ${category_id}..."
 
-    if python3 "${SCRIPT_DIR}/downloader.py" --category "$category_id" 2>&1 | tee -a "$LOG_FILE"; then
+    if python3 "${SCRIPT_DIR}/downloader.py" --category "$category_id" --reset-tokens 2>&1 | tee -a "$LOG_FILE"; then
         # Extract downloaded count from the JSON file
         category_dir="${SCRIPT_DIR}/../../raw/opentdb/categories"
 
